@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standard, Default, and Grace</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0B2E1A; /* Darker British Racing Green */
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: right;
+            margin-bottom: 60px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 20px;
+        }
+
+        .business-card {
+            display: inline-block;
+            text-align: center;
+            padding: 12px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .main-title {
+            font-size: 2.2rem;
+            margin-bottom: 1px;
+            font-weight: bold;
+            opacity: 0.9;
+        }
+
+        .by-line {
+            font-size: 0.6rem;
+            margin-bottom: 2px;
+            font-weight: normal;
+            opacity: 0.7;
+        }
+
+        h1 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            font-weight: bold;
+            opacity: 0.9;
+        }
+
+        .header-subtitle {
+            font-size: 0.6rem;
+            opacity: 0.8;
+            margin-top: 10px;
+            text-align: center;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .projects {
+            display: grid;
+            gap: 40px;
+        }
+
+        .project {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: normal;
+            text-align: center;
+        }
+
+        .project p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .project .subtitle {
+            font-size: 1.3rem;
+            text-align: center;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .project h3 {
+            font-size: 1.4rem;
+            margin: 30px 0 15px 0;
+            font-weight: normal;
+        }
+
+        .project ul {
+            margin: 15px 0 25px 20px;
+        }
+
+        .project li {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .product-label {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .collapsible {
+            margin-top: 30px;
+        }
+
+        .collapsible-header {
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+
+        .collapsible-header:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .collapsible-content {
+            display: none;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+            margin-top: -1px;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .system-requirements {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .system-requirements h3 {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            font-weight: normal;
+            opacity: 0.8;
+        }
+
+        .system-requirements ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .system-requirements li {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            opacity: 0.8;
+        }
+
+        .notes-section {
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+        }
+
+        .note-item {
+            margin-bottom: 20px;
+        }
+
+        .note-item h4 {
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .note-item p {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        .collapsible-content.show {
+            display: block;
+        }
+
+        .screenshots {
+            margin: 30px 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .app-screenshot {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            .app-screenshot {
+                border: none;
+                box-shadow: none;
+                border-radius: 4px;
+            }
+        }
+
+        .project-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            border: 2px solid white;
+            padding: 15px 30px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .project-link:hover {
+            background-color: white;
+            color: #0B2E1A;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .download-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .project {
+                padding: 20px;
+            }
+
+            .business-card {
+                padding: 15px 20px;
+                margin: 0 auto;
+                display: block;
+            }
+
+            .main-title {
+                font-size: 1.4rem;
+            }
+
+            .by-line {
+                font-size: 0.5rem;
+                margin-bottom: 1px;
+            }
+
+            .header-subtitle {
+                font-size: 0.6rem;
+                margin-top: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="business-card">
+                <div class="main-title">The Office</div>
+                <div class="by-line">by</div>
+                <h1>Standard, Default, and Grace</h1>
+                <div class="header-subtitle">Solutions for the discerning professional</div>
+            </div>
+        </header>
+
+        <div class="projects">
+            <div class="project">
+                <div class="product-label">FOR IMMEDIATE RELEASE</div>
+                <h2>DR VON PEEL</h2>
+                <p class="subtitle">An entirely natural-language / cat-based Apple Music client for MacOS</p>
+                
+                <div class="screenshots">
+                    <img src="Screenshot 2025-08-04 at 07.25.26.png" alt="Dr Von Peel introduction" class="app-screenshot">
+                    <img src="Screenshot 2025-08-04 at 07.26.08.png" alt="Dr Von Peel interface" class="app-screenshot">
+                </div>
+                
+                <p>Straight out of the swamps of Louisiana, by way of London (and, for reasons I can't remember, also Germany), I would like to introduce you to your newest soundsystem selector - the greatest feline DJ on the block: DR VON PEEL.</p>
+                
+                <p>Dr Von Peel is powered by Apple Music, and multiple LLMs (via OpenRouter).</p> 
+
+                <p>He takes a brief look at your Apple Music library to get a sense of your vibe, and then there's a chat UI. It's basically as simple as that.</p>
+                
+                <div class="screenshots">
+                    <img src="Screenshot 2025-08-04 at 07.08.47.png" alt="Dr Von Peel interface" class="app-screenshot">
+                </div>
+                
+                <p>You ask Dr Von Peel to spin something, the good Doctor spins it. You ask him who played drums on it, the Good Doctor will tell you, and suggest some other tracks featuring the same performer. I wanted it to feel like you're hanging out with the most knowledgeable music nerd in the world, who is also a cat.</p>
+
+                <p>There are non-nerdy ways to use him: My girlfriend prefers to just tell him what mood she's in, and let Dr Von Peel choose the music himself. But she doesn't know anything about real music, like Bob Dylan, for example. She just listens to dumb pop stuff. Honestly, I don't really know why she uses Dr Von Peel to do that, but that's up to her.</p>
+                
+                <div class="screenshots">
+                    <img src="Screenshot 2025-08-04 at 07.11.26.png" alt="Dr Von Peel in action" class="app-screenshot">
+                </div>
+                
+                <h3>Some other features:</h3>
+                <ul>
+                    <li>You can 'favourite' songs to save them to a list.</li>
+                    <li>You can't save those songs to your own Apple Music library, because I don't think that's possible with MusicKit on MacOS.</li>
+                    <li>You can't AirPlay without playing your full system sound because I also don't think that's possible with MusicKit on MacOS. I would love to hear otherwise!</li>
+                    <li>Dr Von Peel will do a cute little dance. (He's not very good at dancing - I am no animator.)</li>
+                </ul>
+                
+                <p>As a fiction author by day, I'm not made of OpenRouter credits, so while I've allocated a bit of cash for any early cat adopters (should they ever exist), you'll have to input an OpenRouter key of your own if you want to keep spinning tracks with Dr Von Peel once my cash runs out, or you run out of your allocation of free calls on my dime. Obviously your OpenRouter key doesn't get sent anywhere or anything like that. Ain't no malware in this swamp gumbo, bruv.</p>
+                
+                <div class="screenshots">
+                    <img src="Screenshot 2025-08-04 at 07.17.06.png" alt="Dr Von Peel features" class="app-screenshot">
+                </div>
+                
+                <p>I'd make it open-source, but I kind of feel like this is going to be a billion-dollar business (cat DJ) and I want to get the iOS version on the App Store and make money from it, perhaps, in the situation anyone else enjoys having a cat DJ friend as much as I do.</p>
+                
+                <div class="download-section">
+                    <a href="https://github.com/Standard-Default-and-Grace/DoctorVonPeel/releases/latest" class="project-link">Download Latest</a>
+                </div>
+                
+                <div class="collapsible" style="text-align: center;">
+                    <button class="collapsible-header" onclick="toggleCollapsible()">Some notes on why I built it</button>
+                    <div class="collapsible-content" id="collapsible-content">
+                        <p>When I was around thirteen, I think, my best friend was given a macbook for his birthday. It had Garageband on. It had iMovie on. We loved music, and movies, and making music, and making little movies.</p>
+                        
+                        <p>I remember being viscerally struck by the complete lack of pretense in - and total freedom implied by - those two applications.</p>
+                        
+                        <p>They weren't professional tools. They weren't trying to be. But for teenagers who wanted to make cool creative stuff, it changed everything. The UI said: "You want this guitar to sound fuzzy? OK - just click the thing that says it makes the guitar sound fuzzy."</p>
+                        
+                        <p>Those applications were empowering. They assumed you had some intent to make something, and showed you exactly how, in language you understood.</p>
+                        
+                        <p>Very few pieces of software make me feel this way any more. That is sad.</p>
+                        
+                        <p>One of the things that excites me about LLMs is the fundamental requirement of intent. I hate Spotify etc for many reasons, but one of them is that I do not wish to be upsold a podcast when I am trying to engage with art. Neither do I wish to "Discover Weekly". Or, in fact, to discover art on anyone else's schedule. To me, that idea is fucking debasing.</p>
+                        
+                        <p>I believe you should sit down at a machine because you have something you want to do with it. I believe LLM-based UIs can make computer use a less passive activity. I hope that there will be a movement towards UIs that are closer to what we once imagined computers would be: machines that did stuff for us, not to us.</p>
+                        
+                        <p>I am aware of the hypocrisy of replacing an algorithm with an algorithm and calling it a solution. But - you gotta admit - LLMs, for all of flaws, are full of (sometimes imagined) music metadata. They are full of old music journalism. They are actually really, really good at suggesting music, if you ask them. This is the important part: you are asking them.</p>
+                        
+                        <p>I once called that same friend on his parents' landline to play a song down the phone to him that I'd just discovered and loved so much and wanted to enthuse with him about it. He loved it too. We went to so many of their shows together, I can't even remember how many.</p>
+                        
+                        <p>Loving something alone is noble, but it is lonely. Chatting with Dr Von Peel is not the same as passing the aux between you and your friends. Nothing is.</p>
+                        
+                        <p>But at least - even though you can enthuse with him - Dr Von Peel isn't claiming to simulate that lost and magical aux-passing experience for the benefit of his own marketing copy. He is not saying: "music is a social experience (or some other such utterly true nonsense) to drive usage of a new and poorly-thought-through "shared queue" feature, for the benefit of some utterly Godless "Product Owner - Social Experience" wanker who wants to get extra quarterly good-boy points.</p>
+                        
+                        <p>I am not interested in insincere treatment of things I love. What I am interested in is a cat, who is a DJ, from London / Germany / Louisiana, called Dr Von Peel, who has an eyepatch, which is why I have made him available for adoption - in case anyone else should feel similarly :-)</p>
+                    </div>
+                </div>
+
+                <div class="system-requirements">
+                    <h3>System Requirements</h3>
+                    <ul>
+                        <li>• A MacOS computer</li>
+                        <li>• An Apple Music sub (sorry!)</li>
+                        <li>• Joy in your heart</li>
+                        <li>• After your semi-generous free usage, the ability to obtain yourself an OpenRouter API key (if you're under 13, ask for a grown-up to help you)</li>
+                    </ul>
+                </div>
+                <div class="notes-section">
+                    <div class="note-item">
+                        <h4>NB:</h4>
+                        <p>During the extremely generous free OpenRouter calls each user gets (until I run out of cash), Dr Von Peel is not quite as smart at picking tracks as when you're using your own OpenRouter key. He might take a couple of tries to get it right. This is because I couldn't work out how to properly use tool calls in the proxy provider for OpenRouter I'm using during the "free trial" (gross) (AIProxy), and this is very much a 'I built this for myself' type thing, so I don't really want to put a tonne of effort into making a 'free trial' work. It's a cat.</p>
+                    </div>
+                    
+                    <div class="note-item">
+                        <h4>Other NB:</h4>
+                        <p>It runs on GPT4.1 (mostly) during the trial period, I think you get pretty much full control over what models & prompts it uses once you're actually paying for the credits yourself. I found GPT4.1 to be pretty good at balancing 'good knowledge' with 'consistent tool calls', but you might have more fun doing other stuff. Enjoy!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Standard, Default, and Grace. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleCollapsible() {
+            const content = document.getElementById('collapsible-content');
+            content.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
